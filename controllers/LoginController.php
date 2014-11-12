@@ -24,9 +24,9 @@ class LoginController {
 
 
 
-		$consulta= "SELECT * from user ";
+		$consulta= "SELECT * from User ";
         
-        $resultado = mysqli_query($enlace,$consulta);
+        $resultado = mysqli_query($consulta, $enlace);
  		
  	
  		if (!$resultado) {
