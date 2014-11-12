@@ -16,6 +16,6 @@
 	{
 		$url = $_GET['url'];
 	}
-echo "string__".$url;
-/*	$request = new Request ($url);
-	$request->execute();*/
+
+	$request = new Request ($url);
+	$request->execute();

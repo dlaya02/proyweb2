@@ -36,7 +36,7 @@ class View extends Response
         call_user_func(function () use ($template, $vars) 
         {
             extract($vars);
-         
+            echo $template;
             require "views/$template.tpl.php";
         });
 

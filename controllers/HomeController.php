@@ -5,7 +5,7 @@ class HomeController {
 
     public function defaultAction()
     {
-         new View('home', ['titulo' => 'Clase 2']);
+        return new View('home', ['titulo' => 'Clase 2']);
     }
 
 }

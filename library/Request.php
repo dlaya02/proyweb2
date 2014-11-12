@@ -2,13 +2,13 @@
 
 class Request
 {
-				protected $url;
+			protected $url;
 
 			protected $controller;
 			protected $defaultController = 'home';
 
 			protected $action;
-  			protected $defaultAction = 'defaul';
+  			protected $defaultAction = 'default';
 
   			protected $params = array();
 	
@@ -16,7 +16,7 @@ class Request
 			public function __construct($url)
 			{
 				$this->url=$url;
-				echo "string_ ".$url;
+			
 				$segmentos = explode('/',$this->url);
 
 
@@ -128,7 +128,7 @@ class Request
             exit($controllerFileName.'->controlador no existe');
         }
         		
-       /*
+       
 
         //requiere el archivo del controlador ejem: HomeController.php
         require $controllerFileName;
@@ -137,8 +137,11 @@ class Request
         $controller = new $controllerClassName();
 
 
-         call_user_func_array([$controller, $actionMethodName], $params);*/
-     
+        $response = call_user_func_array([$controller, $actionMethodName], $params);
+     	//$response->execute();
+
+
+     	
      
     }
 
