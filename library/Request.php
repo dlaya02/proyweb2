@@ -138,8 +138,12 @@ class Request
 
 
         $response = call_user_func_array([$controller, $actionMethodName], $params);
-     	
-
+     	/*
+     	if(!$response)
+     	{
+			echo "No existe action $actionMethodName";
+     	}
+     	*/
     	if ($response instanceof Response)
         {
             $response->execute();

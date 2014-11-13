@@ -22,12 +22,7 @@ class LoginController {
         $usuario = $_POST["username"];
         $clave = $_POST["password"];
 
-        $enlace = mysqli_connect('localhost', 'david', '20315979', 'lnfpv');
-																	
-		if  (!$enlace)  
-		{
-		    die('No pudo conectarse: ' . mysql_error());
-		}
+       
 		
 
 		$consulta= "SELECT privilegio FROM usuario where username ='".$usuario."' AND password = ".$clave ;

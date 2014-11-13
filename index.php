@@ -8,6 +8,10 @@
 	require 'library/Response.php';
 	require 'library/View.php';
 	require 'library/Entrenador.php';
+	require 'library/Database.php';
+	require 'helpers/misc_helper.php';
+
+	
 
 	if(empty($_GET['url']))
 	{
@@ -17,6 +21,6 @@
 	{
 		$url = $_GET['url'];
 	}
-
+	pre($url);
 	$request = new Request ($url);
 	$request->execute();
