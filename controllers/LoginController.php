@@ -6,48 +6,108 @@ class LoginController {
 
 
 
+
     public function defaultAction()
     {
-        echo "usuario: ".$_POST["username"]."  Contraseña: ".$_POST["password"];
+
+		return new View('login', ['errorSesion' => '']);
+
+    }
+
+    //Funcion que retorna la vista para el inicio de secion
+    public function inicioAction()
+    {
+		//echo "usuario: ".$_POST["username"]."  Contraseña: ".$_POST["password"];
 
         $usuario = $_POST["username"];
-        $contraseña = $_POST["password"];
+        $clave = $_POST["password"];
 
-       // $enlace =  mysql_connect('localhost', 'david', '20315979');
-        $enlace = mysqli_connect('localhost', 'david', '20315979', 'proyectoweb');
+        $enlace = mysqli_connect('localhost', 'david', '20315979', 'lnfpv');
 																	
 		if  (!$enlace)  
 		{
 		    die('No pudo conectarse: ' . mysql_error());
 		}
-		echo 'Conectado satisfactoriamente  _____';
+		
 
-
-
-		$consulta= "SELECT * from user ";
-        
+		$consulta= "SELECT privilegio FROM usuario where username ='".$usuario."' AND password = ".$clave ;
         $resultado = mysqli_query($enlace,$consulta);
+ 	
+
  		
  	
+ 		
  		if (!$resultado) {
-   			 $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
-   			 $mensaje .= 'Consulta completa: ' . $consulta;
-   			 die($mensaje);
+   		//	 $mensaje  = 'Consulta no válida: ' . mysql_error() . "\n";
+   		//	 $mensaje .= 'Consulta completa: ' . $consulta;
+   			 return new View('login', ['errorSesion' => 'Error Nombre de Usuario o Contraseña invalido']);
+   			// die($mensaje);
 		}else{
 		
-//***************************************************************
-			//supuestamente en esta mierda.... es que se hecha tres...
-			$fila = mysql_fetch_array($resultado);
+			while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC))
+			
+			{	
+			
+				if( $row["privilegio"] == 3)
+				{
+				
+				return new View('jugador', ['nombre' => 'David','edad'=>'23','array'=>['0'=>'el futbol en el mundo']]);
+				
+				}elseif ( $row["privilegio"] == 2) {
+			
+				$persona = $this->consultarEntrenador($usuario,$enlace);
+				return new View('entrenador', ['entrenador' => $persona,'array'=>['0'=>'el futbol en el mundo']]);
+				
 
-			if(!$fila)
-			{
-				echo"se pudrio la mierda";
+				}elseif ($row["privilegio"] == 1) {
+					
+				}
 			}
 		}
- 		      
-       
     }
 
 
+	public function consultarEntrenador($entrenador,$enlace)
+    {
+    	$consulta= "SELECT * FROM entrenador where Usuario_usernamer ='".$entrenador."'" ;
+        $resultado = mysqli_query($enlace,$consulta);
+        $sql = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+
+
+		$jugadorUsername = array();
+      
+        $consulta2= "SELECT Usuario_username FROM jugador where entrenador_Usuario_usernamer ='".$entrenador."'" ;
+        $resultado2 = mysqli_query($enlace,$consulta2);
+        
+       $i=0;
+       while( $sql2 = mysqli_fetch_array($resultado2, MYSQLI_ASSOC))
+       {
+       		$jugadorUsername[$i]=$sql2["Usuario_username"];
+			echo "<br/>".$jugadorUsername[$i];
+       		$i=$i+1;
+
+
+       }
+
+
+         $salida =new Entrenador($entrenador, $sql["Nombre"],$sql["Apodo"],$sql["Edad"],
+								$sql["Nacionalidad"],$sql["Bio"],$sql["Equipos"],$sql["Club_Nombre"],    
+								$sql["Titulos"]);
+
+         $salida->setJugadoresUsernames($jugadorUsername);
+
+         return $salida;
+
+    }
 
 }
+
+/*
+
+
+$sql["Usuario_username"], $sql["Nombre"],$sql["Apodo"],$sql["Edad"],
+$sql["Nacionalidad"],$sql["Bio"],$sql["Equipos"],$sql["Club_Nombre"],    
+$sql["Titulos"]
+			
+	*/
+

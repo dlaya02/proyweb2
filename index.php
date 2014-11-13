@@ -7,6 +7,7 @@
 	require 'library/Inflector.php';
 	require 'library/Response.php';
 	require 'library/View.php';
+	require 'library/Entrenador.php';
 
 	if(empty($_GET['url']))
 	{
