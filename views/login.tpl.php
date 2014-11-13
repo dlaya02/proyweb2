@@ -11,10 +11,10 @@
 
         <div class="container">
              <form class="loginForm" action="user/login" method="POST" role="form">
-                <h2 class="">Iniciar sesión</h2>
-                <input type="text" name="username" class="form-control" placeholder="Usuario" required="" autofocus="">
-                <input type="password" name="password" class="form-control" placeholder="Contraseña" required="">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
+                <h2 class="iniciiarSesion">Iniciar sesión</h2>
+                <input type="text" name="username" class="textBox" placeholder="Usuario" required="" autofocus="">
+                <input type="password" name="password" class="textBox" placeholder="Contraseña" required="">
+                <button class="boton" type="submit">Iniciar</button>
                 <div id="errorSesion"> <?= $errorSesion ?> </div>
             </form>
         </div> 

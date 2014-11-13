@@ -59,6 +59,8 @@
 
 		</form>
 
+		<a href='http://proyweb2/user/logout'>Cerrar sesion</a>
+
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script>
 		$(function(){
@@ -67,6 +69,7 @@
 				alert(username);
 				$.post('http://proyweb2/controllers/getJugadorController.php', {username:username}, function(data, status){
 					console.log(data);
+					console.log(data['usuario']);
 				});
 				return false;
 			});

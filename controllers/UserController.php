@@ -31,6 +31,7 @@ class UserController {
 			setcookie('misession','1',7200);
 			$_SESSION['username'] = $row['username'];
 			$_SESSION["privilegio"] = $row["privilegio"];
+			$_SESSION['password'] = $password;
 			if($row["privilegio"] == 3)
 			{
 				return new View('jugador', ['nombre' => 'David','edad'=>'23','array'=>['0'=>'el futbol en el mundo']]);
@@ -53,6 +54,7 @@ class UserController {
     	session_start();
     	session_destroy();
     	echo "Destrui la sesion";
+    	return new View('login', ['errorSesion' => '']);
      }
 
     public function consultarEntrenador($entrenador,$enlace)
