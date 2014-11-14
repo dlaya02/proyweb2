@@ -22,7 +22,7 @@ class UserController {
        
         if(!$resultado) 
         {
-   			 return new View('login', ['errorSesion' => 'Error Nombre de Usuario o Contraseña invalido']);
+   		 return new View('login', ['errorSesion' => 'Error Nombre de Usuario o Contraseña invalido']);
 		}
 		else
 		{
@@ -32,7 +32,9 @@ class UserController {
 			$_SESSION['username'] = $row['username'];
 			$_SESSION["privilegio"] = $row["privilegio"];
 			$_SESSION['password'] = $password;
-			if($row["privilegio"] == 3)
+			
+
+            if($row["privilegio"] == 3)
 			{
 				return new View('jugador', ['nombre' => 'David','edad'=>'23','array'=>['0'=>'el futbol en el mundo']]);
 			}
@@ -65,30 +67,53 @@ class UserController {
 
 
 		$jugadorUsername = array();
-      
-        $consulta2= "SELECT Usuario_username FROM jugador where entrenador_Usuario_usernamer ='".$entrenador."'" ;
+        $consulta2= "SELECT * FROM jugador where entrenador_Usuario_usernamer ='".$entrenador."'"  ;
         $resultado2 = mysqli_query($enlace,$consulta2);
         
        $i=0;
        while( $sql2 = mysqli_fetch_array($resultado2, MYSQLI_ASSOC))
        {
        		$jugadorUsername[$i]=$sql2["Usuario_username"];
-			echo "<br/>".$jugadorUsername[$i];
+			//echo "<br/>".$jugadorUsername[$i];
        		$i=$i+1;
-
-
        }
 
 
          $salida =new Entrenador($entrenador, $sql["Nombre"],$sql["Apodo"],$sql["Edad"],
 								$sql["Nacionalidad"],$sql["Bio"],$sql["Equipos"],$sql["Club_Nombre"],    
-								$sql["Titulos"]);
+								$sql["Titulos_e"]);
 
          $salida->setJugadoresUsernames($jugadorUsername);
 
          return $salida;
 
     }
+
+
+    public function consultarJugador($jugador,$enlace)
+    {
+        $consulta= "SELECT * FROM jugador where Usuario_usernamer ='".$jugador."'" ;
+        $resultado = mysqli_query($enlace,$consulta);
+        $sql = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+
+        $salida =new jugador($jugador, $sql["Nombre"],$sql["Apodo"],$sql["Edad"],
+                                $sql["Nacionalidad"],$sql["Bio"],$sql["Equipos"],$sql["Club_Nombre"],    
+                                $sql["Titulos_j"],$sql["Cant_goles"],$sql["TA"],
+                                $sql["TR"],$sql["MinJug"],$sql["Valoracion"],
+                                $sql["entrenador_Nombre"],$sql["entrenador_Usuario_username"],
+                                $sql["club_Nombre_c"]);
+
+         
+
+         return $salida;
+
+    }
+
+
+
+
+
+
 
     public function ajax_getDataUserAction()
     {
@@ -99,9 +124,9 @@ class UserController {
     		'password' 		=> '123',
     		'privilegio' 	=> 3
     	);
-    	echo "entro aqui en ajax_getDataUserAction()";
+    	//echo "entro aqui en ajax_getDataUserAction()";
 
     	header('Content-Type: application/json');
-    	echo json_encode($data);
+    	//echo json_encode($data);
     }
 }

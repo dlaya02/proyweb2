@@ -19,7 +19,7 @@ class  Entrenador {
 
 
 	public function __construct($Usuario_username, $Nombre,$Apodo,$Edad,
-                                $Nacionalidad,$Bio,$Equipos,$Club_Nombre,$Titulos)
+                                $Nacionalidad,$Bio,$Equipos,$Club_Nombre,$Titulos_e)
 	{
             $this->userName     =$Usuario_username;
             $this->nombre       =$Nombre;
@@ -29,7 +29,7 @@ class  Entrenador {
             $this->bio          =$Bio;
             $this->equipo       =$Equipos;
             $this->clubNombre   =$Club_Nombre;
-            $this->titulos      =$Titulos;
+            $this->titulos      =$Titulos_e;
 			
 	}
 

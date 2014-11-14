@@ -14,7 +14,6 @@ class BackendController {
 			{
 				require 'controllers/UserController.php';
 				$entrenador = new UserController();
-				//$var = array ('username'=>$_SESSION['username'],'password'=>$_SESSION['password']);
 				$_POST['username']=$_SESSION['username'];
     			$_POST['password']=$_SESSION['password'];
 

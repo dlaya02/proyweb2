@@ -3,6 +3,8 @@
 <head>
     <base href="<?php echo base_url(); ?>">
 	<meta charset="utf-8"/>
+    <link rel="stylesheet"  href="assets/normalize.css"/>
+    <link rel="stylesheet"  href="assets/login.css"/>
 	
 	<title> Caimanera</title>
 </head>
@@ -15,9 +17,10 @@
                 <input type="text" name="username" class="textBox" placeholder="Usuario" required="" autofocus="">
                 <input type="password" name="password" class="textBox" placeholder="Contraseña" required="">
                 <button class="boton" type="submit">Iniciar</button>
-                <div id="errorSesion"> <?= $errorSesion ?> </div>
+                
             </form>
         </div> 
+        <div id="errorSesion"> <?= $errorSesion ?> </div>
     
 
 
