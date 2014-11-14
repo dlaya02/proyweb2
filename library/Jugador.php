@@ -28,8 +28,8 @@ class  Jugador {
 	
 
 
-	public function __construct($jugador, $Nombre,$Apodo,$Edad,
-                                $Nacionalidad,$Bio,$Equipos,$Club_Nombre,    
+	public function __construct($Usuario_username, $Nombre,$Apodo,$Edad,
+                                $Nacionalidad,$Bio,$Equipos,    
                                 $Titulos_j,$Cant_goles,$TA,
                                 $TR,$MinJug,$Valoracion,
                                 $entrenador_Nombre,$entrenador_Usuario_username,
@@ -42,15 +42,13 @@ class  Jugador {
             $this->nacionalidad 		=$Nacionalidad;
             $this->bio          		=$Bio;
             $this->equipo       		=$Equipos;
-            $this->clubNombre   		=$Club_Nombre;
-            $this->titulos      		=$Titulos;
-		    $this->$goles 				=$Cant_goles;
-			$this->$tarjetasRojas 		=$TR;
-			$this->$tarjetasAmarillas 	=$TA;
-			$this->$valoracion 			=$Valoracion;
-			$this->$EntrenadorNombre 	=$entrenador_Nombre;
-			$this->$EntrenadorUserName 	=$entrenador_Usuario_username;
-			$this->$MinJug 				=$MinJug;
+            $this->goles 				=$Cant_goles;
+			$this->tarjetasRojas 		=$TR;
+			$this->tarjetasAmarillas 	=$TA;
+			$this->valoracion 			=$Valoracion;
+			$this->EntrenadorNombre 	=$entrenador_Nombre;
+			$this->EntrenadorUserName 	=$entrenador_Usuario_username;
+			$this->MinJug 				=$MinJug;
 			
 	}
 

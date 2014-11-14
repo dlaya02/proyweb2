@@ -1,3 +1,9 @@
+a
+{
+	text-decoration: none;
+	color: black;
+}
+
 body
 {
 	font-family: 'PT Sans', sans-serif;
@@ -8,7 +14,99 @@ body
  }
 
 
-#cont
+header
+{	vertical-align:top; 
+	color: white;
+	background-color: steelblue;
+	margin-top:0;
+}
+
+header h1
 {
-	 background-image: url("wall.jpg");
+
+	margin:1rem;
+}
+
+#cerrar
+{
+	background-color: steelblue;
+	text-align: center;
+	display: block;
+	color: white;
+
+}
+
+
+#contenifoInformacion
+{
+	display: inline-block;
+	vertical-align:top; 
+	border-left: solid 2px steelblue;
+	margin-left: 5rem;
+	padding-left: 1rem;
+	
+}
+
+#contenifoInformacion strong
+{
+	color: steelblue;
+}
+#contenidoNombre
+{
+	display: inline-block;
+
+}
+
+#editarJugadores
+{
+	display: block;
+	background-color: skyblue;
+}
+
+#listas
+{
+	display: inline-block;
+	padding-left: 5rem;
+
+}
+#formulario2 
+{
+	vertical-align:top; 
+	background-color: blue;
+	display: inline-block;
+	background-color: black;
+}
+
+#editarJugador
+{
+	width: 100px;
+	color: white;
+	background-color: navy;
+
+}
+#editarJugadorF
+{	
+	vertical-align:top; 
+
+	
+	margin-left: 5rem;
+	width: 400px;
+
+	display: inline-block;
+	
+
+}
+#editarJugadorF input
+{	display: block;
+
+}
+
+
+#editarJugadorF p
+{
+	margin: 0;
+
+	color: navy;
+	display: inline-block;
+	
 }

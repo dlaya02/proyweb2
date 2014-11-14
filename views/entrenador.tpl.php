@@ -16,7 +16,7 @@
 
 	<header>
 			
-			<h1>LNFPV</h1>
+			<h1><?= $entrenador->getNombre(); ?>/<?= $entrenador->getApodo(); ?></h1>
 			
 	</header>
 
@@ -28,23 +28,24 @@
 			
 				<img class="imagen"src="http://proyweb2/assets/entrenador.jpg" />
 				<h2 class="nombre">
-				<?= $entrenador->getNombre(); ?>/<?= $entrenador->getApodo(); ?>
+				
 				</h2>
 				
 			</div>
 
 			<div id="contenifoInformacion">
+
 				
-				<p class="infotexto"><?= $entrenador->getBio(); ?></p>
-				<p class="infotexto"><?= $entrenador->getEdad(); ?></p>
-				<p class="infotexto"><?= $entrenador->getNacionalidad(); ?></p>
-				<p class="infotexto"><?= $entrenador->getTitulos(); ?></p>
-				<p class="infotexto"><?= $entrenador->getEquipo(); ?></p>
-				<p class="infotexto"><?= $entrenador->getClubNombre(); ?></p>
+				<p class="infotexto"><strong>Biografia </strong>/ <?= $entrenador->getBio(); ?></p>
+				<p class="infotexto"><strong>Edad </strong>/ <?= $entrenador->getEdad(); ?></p>
+				<p class="infotexto"><strong>Nacionalidad </strong>/ <?= $entrenador->getNacionalidad(); ?></p>
+				<p class="infotexto"><strong>Titulos / </strong><?= $entrenador->getTitulos(); ?></p>
+				<p class="infotexto"><strong>Equipos / </strong><?= $entrenador->getEquipo(); ?></p>
+				<p class="infotexto"><strong>Clubes / </strong><?= $entrenador->getClubNombre(); ?></p>
 
 			</div>
 
-			<div id="contenidoEditar"><a href="#">equita</a></div>
+			<div id="contenidoEditar"><a href="#">Editita Tu Informacion personal</a></div>
 
 		</section>
 
@@ -60,25 +61,35 @@
 			</form >
 		</section>
 
+		<section id="editarJugadores">
+			<div id="listas">
+			<ul > Seleccione Jugador 
+				<?php $array=$entrenador->getJugadoresUsernames(); ?>
+				<?php foreach($array as $key => $value): ?>
+					<li><a class="usuario" href="#"><?php echo $value; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+			</div>
 
-		<ul>
-			<?php $array=$entrenador->getJugadoresUsernames(); ?>
-			<?php foreach($array as $key => $value): ?>
-				<li><a class="usuario" href="#"><?php echo $value; ?></a></li>
-			<?php endforeach; ?>
-		</ul>
+		</div id="formulario2">
+			<form id="editarJugadorF" action="http://proyweb2/controllers/setJugador.php" method="POST" target="_parent">
+					<p>Valoracion</p>
+					<input type="text" id="Valoracion" name="Valoracion" class="cajaTexto2" placeholder="Valoracion" required="" a>
+	                <p>Cantidad de Goles</p>
+	                <input type="text" id="Cant_goles"name="Cant_goles" class="cajaTexto2" placeholder="Cantidad de Goles" required="">
+	                <p>Cantidad de Tarjetas Rojas</p>
+	                <input type="text" id="TR"name="TR" class="cajaTexto2" placeholder="Cantidad Tarjetas Rojas" required="" a>
+	                <p>Cantidad de Tarjetas Amarillas</p>
+	                <input type="text" id="TA"name="TA" class="cajaTexto2" placeholder="Cantidad Tarjetas Amarillas" required="" a>
+	                <input type="hidden" id="Usuario_username" name="Usuario_username" value="valor"> 
+				<a id="editarJugador" href="#" >Editar</a>
+			</form>
+				
+		</div>
 
-	
-		<form id="editarJugador" action="http://proyweb2/controllers/setJugador.php" method="POST" target="_parent">
-				<input type="text" id="Valoracion" name="Valoracion" class="cajaTexto2" placeholder="Valoracion" required="" a>
-                <input type="text" id="Cant_goles"name="Cant_goles" class="cajaTexto2" placeholder="Cantidad de Goles" required="">
-                <input type="text" id="TR"name="TR" class="cajaTexto2" placeholder="Cantidad Tarjetas Rojas" required="" a>
-                <input type="text" id="TA"name="TA" class="cajaTexto2" placeholder="Cantidad Tarjetas Amarillas" required="" a>
-                <a id="editarJugador" href="#" >Editar</a>
-				<input type="hidden" id="Usuario_username" name="Usuario_username" value="valor"> 
-		</form>
+		</section>
 
-		<a href='http://proyweb2/user/logout'>Cerrar sesion</a>
+		<a id="cerrar" href='http://proyweb2/user/logout'>Cerrar sesion</a>
 
 	<script src="http://proyweb2/assets/jquery.js"></script>
 	<script src="http://proyweb2/assets/entrenador.js"></script>
