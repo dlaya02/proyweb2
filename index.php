@@ -9,6 +9,7 @@
 	require 'library/View.php';
 	require 'library/Entrenador.php';
 	require 'library/Jugador.php';
+	require 'library/Club.php';
 	require 'library/Database.php';
 	require 'helpers/misc_helper.php';
 

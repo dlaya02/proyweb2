@@ -1,0 +1,157 @@
+$('#getDatosClub').click(function(){
+				
+				
+				
+				var username = $("#ClubName").html();
+				console.log(username);
+				
+				//$.post('http://proyweb2/controllers/getClubByName.php', {username:username}, function(data, status){
+				
+					/*//$("#Nombre").val(data.Nombre);
+					$("#Apodo").val(data.Apodo);
+					$("#Bio").val(data.Bio);
+					$("#Edad").val(data.Edad);
+					$("#Nacionalidad").val(data.Nacionalidad);
+					$("#Titulos").val(data.Titulos_e);	
+					$("#Equipo").val(data.Equipos);
+					//$("#Club_Nombre").val(data.Club_Nombre); */
+
+
+					
+				//});
+				return false;
+			});
+
+
+
+<div id="getDatosClub">Editita rendimiento del Club</div>
+		<h2 id="ClubName" style="display:none" ><?= $entrenador->getClubNombre();?></h2>
+		
+
+		<section id="editarClub">
+			
+			<form id="formularioClub"action="fromcñum...">
+			<p>Historia</p>
+			<input type="text1" id="Historia" name="Historia" class="form-control" placeholder="Historia" required="">
+			<br>
+			<p>Fundacion</p>
+			<input type="text1" id="Fundacion"  name="Fundacion" class="form-control" placeholder="Fundacion" required="">
+			<p>Partidos Jugados</p>
+			<input type="text1" id="PJ" name="PJ" class="form-control" placeholder="Partidos Jugados" required="">
+			<br>
+			<p>Partidos Ganados</p>	
+			<input type="text1" id="PG" name="PG" class="form-control" placeholder="Partidos Ganados" required="">
+			<br>
+			<p>Partidos Empatados</p>
+			<input type="text1" id="PE" name="PE" class="form-control" placeholder="Partidos Empatados" required="">
+			<p>Partidos Perdidos</p>
+			<input type="text1" id="PP" name="PP" class="form-control" placeholder="Partidos Perdidos" required="">
+			<p>Puntos</p>
+			<input type="text1" id="Puntos" name="Puntos" class="form-control" placeholder="Puntos" required="">
+			<p>Goles a Favor</p>
+			<input type="text1" id="GF" name="GF" class="form-control" placeholder="Goles a Favor" required="">
+			<p>Goles en Contra</p>
+			<input type="text1" id="GC" name="GC" class="form-control" placeholder="Goles en Contra" required="">
+			<p>Titulos</p>
+			<input type="text1" id="Titulos_c" name="Titulos_c" class="form-control" placeholder="Titulos_c" required="">
+			<a id="editarClub" href="#" >Editar</a>
+			</form >
+		</section>
+
+
+
+
+
+
+
+
+
+
+
+$('#getDatosClub').click(function(){
+				
+				
+				
+				var username = $("#ClubName").html();
+				console.log(username);
+
+				$.post('http://proyweb2/controllers/getClubByName.php', {username:username}, function(data, status){
+				console.log("Data->");
+				console.log(data);
+					/*//$("#Nombre").val(data.Nombre);
+					$("#Apodo").val(data.Apodo);
+					$("#Bio").val(data.Bio);
+					$("#Edad").val(data.Edad);
+					$("#Nacionalidad").val(data.Nacionalidad);
+					$("#Titulos").val(data.Titulos_e);	
+					$("#Equipo").val(data.Equipos);
+					//$("#Club_Nombre").val(data.Club_Nombre); */
+
+
+					
+				});
+				return false;
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php 
+
+		$nombre = $_POST['username'];
+
+        //echo("aqui el puto nombre_2: ".$nombre);
+
+		$enlace = mysqli_connect('localhost', 'david', '20315979', 'lnfpv');														
+		if  (!$enlace)  
+		{
+		    die('No pudo conectarse: ' . mysql_error());
+		}
+
+		
+        $consulta = "SELECT * FROM club WHERE Nombre_c='PoligonoAbierto'";
+
+        $resultado = mysqli_query($enlace,$consulta);
+        $sql = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+
+
+    	$data = array(
+            "Historia" 	=>$sql["Historia"],
+            "Fundacion" =>$sql["Fundacion"],
+            "Estadio"   =>$sql["Estadio"],
+            "PJ"        =>$sql["PJ"],
+            "PG" 		=>$sql["PG"],
+            "PE"        =>$sql["PE"],
+            "PP"       	=>$sql["PP"],
+            "Puntos"   	=>$sql["Puntos"],
+            "GF"      	=>$sql["GF"],
+    		"GC"		=>$sql["GC"],
+    		"Titulos_C"	=>$sql["Titulos_C"]
+    	);
+    	 
+
+    	header('Content-Type: application/json');
+    	echo json_encode($data);
+
+
+ ?>

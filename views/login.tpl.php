@@ -3,7 +3,7 @@
 <head>
     <base href="<?php echo base_url(); ?>">
 	<meta charset="utf-8"/>
-    <link rel="stylesheet"  href="assets/normalize.css"/>
+    
     <link rel="stylesheet"  href="assets/login.css"/>
 	
 	<title> Caimanera</title>
