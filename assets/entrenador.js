@@ -124,3 +124,41 @@ $('#getDatosClub').click(function()
 		return false;
 	
 });
+
+
+$('#editarClubBoton').click(function()
+{	
+		var Nombre_c 	= 	$("#ClubName").html();
+		var Historia 	= 	$("#Historia").val();
+		var Fundacion 	= 	$("#Fundacion").val();
+		var PJ 			= 	$("#PJ").val();
+		var PG 			= 	$("#PG").val();
+		var PE 			= 	$("#PE").val();
+		var PP 			= 	$("#PP").val();
+		var Puntos 		= 	$("#Puntos").val();
+		var GF 			= 	$("#GF").val();
+		var GC 			= 	$("#GC").val();
+		var Titulos_C 	= 	$("#Titulos_c").val();
+
+		$.post('http://proyweb2/controllers/setClubByName.php', {
+						  	"Nombre_c":Nombre_c,
+						  	"Historia":Historia,
+						  	"Fundacion":Fundacion,
+						  	"PJ":PJ,
+						  	"PG":PG,
+						  	"PE":PE,
+						  	"PP":PP,
+						  	"GF":GF,
+						  	"GC":GC,
+						  	"Titulos_C":Titulos_C,
+						  	"Puntos":Puntos
+			}, function(data, status){
+				//console.log(data);	
+				window.location.reload();  	
+				});
+
+
+
+		return false
+
+});
